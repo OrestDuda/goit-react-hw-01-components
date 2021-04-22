@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import placeholder from '../../placeholder.png'
 import styles from './FriendList.module.css';
 import FriendListItem from "../FriendListItem/FriendListItem";
+import Statistics from "../Statistics/Statistics";
 
 const FriendList = ({friends})=>(
     <ul className={styles.friendList}>
@@ -13,10 +15,16 @@ const FriendList = ({friends})=>(
     </ul>
 );
 
+Statistics.defaultProps = {
+    avatar: {placeholder},
+};
+
 FriendList.propTypes = {
     friends: PropTypes.arrayOf(
         PropTypes.shape({
-
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            isOnline: PropTypes.bool.isRequired,
         })).isRequired,
 };
 export default FriendList;
